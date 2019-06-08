@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './App.css';
-import Header from "./components/Header";
-import {Player} from "./components/Player";
-import AddPlayerForm from "./components/AddPlayerForm";
+import style from './Scoreboard.module.css';
+import Header from "../../components/Header";
+import {Player} from "../../components/Player";
+import AddPlayerForm from "../../components/AddPlayerForm";
 import {connect} from "react-redux";
 
 
-class App extends React.Component {
+class ScoreBoard extends React.Component {
 
   // 1) player 삭제 콜백 펑션 정의
   handleRemovePlayer = (id) => {
@@ -45,19 +45,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='scoreboard'>
-        <Header  players={this.props.players}/>
+        <div className={style.scoreboard}>
+          <Header players={this.props.players} />
 
-        {
-          this.props.players.map(player => (
-            <Player name={player.name} key={player.id} id={player.id}
-                    score={player.score}
-                    removePlayer={this.handleRemovePlayer}
-                    changeScore={this.handleChangeScore}/>
-          ))
-        }
-        <AddPlayerForm addPlayer={this.handleAddPlayer}/>
-      </div>
+          {
+            this.props.players.map(player => (
+                <Player name={player.name} key={player.id} id={player.id}
+                        score={player.score}
+                        removePlayer={this.handleRemovePlayer}
+                        changeScore={this.handleChangeScore}/>
+            ))
+          }
+          <AddPlayerForm addPlayer={this.handleAddPlayer}/>
+        </div>
     );
   }
 }
@@ -69,4 +69,4 @@ const mapStateToProps = (state) =>({
 
 
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(ScoreBoard);

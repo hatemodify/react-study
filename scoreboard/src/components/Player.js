@@ -2,6 +2,9 @@ import React from 'react';
 import Counter from "./Counter";
 import PropTypes from 'prop-types'
 
+import style from '../pages/scoreboard/Scoreboard.module.css'
+
+
 export class Player extends React.PureComponent {
 
   static propTypes = {
@@ -19,12 +22,12 @@ export class Player extends React.PureComponent {
 
 
     return (
-      <div className='player'>
-        <span className='player-name'>
-          <button className='remove-player'
+      <div className={style["player"]}>
+        <span className={style["player-name"]}>
+          <button className={style["remove-player"]}
                   onClick={() => removePlayer(id)}>x</button>
         </span>
-        <span className='player-name'>{name}</span>
+        <span className={style["player-name"]}>{name}</span>
         <Counter score={score} id={id} changeScore={changeScore}/>
       </div>
     );

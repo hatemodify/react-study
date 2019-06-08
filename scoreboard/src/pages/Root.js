@@ -1,12 +1,15 @@
 import React from 'react';
 
+
+
 import {BrowserRouter} from "react-router-dom";
 import {Home} from "./Home";
-import {Heros} from "./Heros";
-import {ScoreBoard} from "./ScoreBoard";
+import {Heros} from "./heroes/Heros";
+import ScoreBoard from "./scoreboard/ScoreBoard";
 import Switch from "react-router-dom/es/Switch";
 import Route from "react-router-dom/es/Route";
 import {Menu} from "./Menu";
+
 
 export class Root extends React.Component {
   constructor(props) {

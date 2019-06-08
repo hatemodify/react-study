@@ -1,33 +1,41 @@
 import React from 'react';
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, } from 'reactstrap';
+import {NavLink} from "react-router-dom";
 
 export class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
 
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
+    }
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Features</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    );
-  }
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <Navbar color="dark" dark expand="md">
+                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle}/>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink to="/heros" className="nav-link">Heros</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink to="/scoreboard" className="nav-link">Scoreboard</NavLink>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
+        );
+    }
 }
